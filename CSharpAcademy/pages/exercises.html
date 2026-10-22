@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تمرین‌ها — آکادمی C#</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/design.css">
+  <script src="../js/theme-manager.js"></script>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main id="main" tabindex="-1" class="page">
+    <nav class="crumbs"><a href="../index.html">صفحه اصلی</a> / تمرین‌ها</nav>
+    <header class="page-head">
+      <h1>تمرین‌های کدنویسی</h1>
+      <p class="lead">کد خود را بنویسید، اجرا کنید و با آزمون‌ها بررسی کنید. راه‌حل بعد از سه تلاش قابل مشاهده است.</p>
+    </header>
+    <ul class="exam-list" id="ex-list"></ul>
+  </main>
+  <script src="../data/curriculum.js"></script>
+  <script src="../data/exercises.js"></script>
+  <script src="../js/progress-manager.js"></script>
+  <script src="../js/common.js"></script>
+  <script>
+    (function () {
+      Common.renderHeader('../');
+      const done = Progress.read().quiz || {};
+      document.getElementById('ex-list').innerHTML = window.EXERCISES.map(e => {
+        const best = done['ex:' + e.id];
+        const st = best ? (best.score === best.total ? 'قبول شده' : 'نیمه‌کاره: ' + best.score + ' از ' + best.total) : 'انجام نشده';
+        return '<li class="exam-item"><a href="exercise.html?id=' + encodeURIComponent(e.id) + '"><span class="exam-title">' + Common.esc(e.title) + '</span><span class="exam-meta">' + Common.esc(e.level) + ' — ' + Common.esc(st) + '</span></a><p class="muted small">' + Common.esc(e.goal) + '</p></li>';
+      }).join('');
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>واژه‌نامه — آکادمی C#</title>
+  <script src="../js/theme-manager.js"></script>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/design.css">
+  <link rel="stylesheet" href="../css/unity.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <main id="main" tabindex="-1" class="page">
+    <nav class="crumbs" aria-label="مسیر صفحه"><a href="../index.html">صفحه اصلی</a> / واژه‌نامه</nav>
+    <header class="page-head">
+      <h1>واژه‌نامه و دیکشنری جمله‌ها</h1>
+      <p class="lead">اصطلاح‌های برنامه‌نویسی را جست‌وجو کنید، یا جمله‌های رایج سی‌شارپ را با معنی فارسی ببینید.</p>
+    </header>
+
+    <div class="tabs" role="tablist" aria-label="بخش‌های واژه‌نامه">
+      <button type="button" class="tab is-active" role="tab" aria-selected="true" data-tab="terms" id="tab-terms">اصطلاحات</button>
+      <button type="button" class="tab" role="tab" aria-selected="false" data-tab="sentences" id="tab-sentences">جمله‌های سی‌شارپ</button>
+    </div>
+
+    <section id="panel-terms" role="tabpanel" aria-labelledby="tab-terms">
+      <div class="glossary-tools">
+        <label class="visually-hidden" for="g-search">جست‌وجو</label>
+        <input type="search" id="g-search" class="search-input" placeholder="مثلاً: کلاس، Stack، async">
+        <label class="visually-hidden" for="g-cat">دسته</label>
+        <select id="g-cat" class="select-input"><option value="">همه‌ی دسته‌ها</option></select>
+      </div>
+      <p class="muted small" id="g-count" aria-live="polite"></p>
+      <ul class="glossary-list" id="g-list"></ul>
+    </section>
+
+    <section id="panel-sentences" role="tabpanel" aria-labelledby="tab-sentences" hidden>
+      <div class="glossary-tools">
+        <label class="visually-hidden" for="s-search">جست‌وجوی جمله</label>
+        <input type="search" id="s-search" class="search-input" placeholder="مثلاً: حلقه، خواندن، null">
+        <label class="visually-hidden" for="s-cat">دسته‌ی جمله</label>
+        <select id="s-cat" class="select-input"><option value="">همه‌ی دسته‌ها</option></select>
+      </div>
+      <p class="muted small" id="s-count" aria-live="polite"></p>
+      <ul class="sentence-list" id="s-list"></ul>
+    </section>
+  </main>
+  <script src="../data/curriculum.js"></script>
+  <script src="../data/glossary.js"></script>
+  <script src="../data/glossary-extra.js"></script>
+  <script src="../data/glossary-more.js"></script>
+  <script src="../data/glossary-more2.js"></script>
+  <script src="../data/sentences.js"></script>
+  <script src="../data/sentences-2.js"></script>
+  <script src="../data/sentences-3.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/glossary.js"></script>
+</body>
+</html>

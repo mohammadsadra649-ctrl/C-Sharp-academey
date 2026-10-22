@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>جست‌وجو — آکادمی C#</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/unity.css">
+  <link rel="stylesheet" href="../css/design.css">
+  <script src="../js/theme-manager.js"></script>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main id="main" tabindex="-1" class="page">
+    <nav class="crumbs"><a href="../index.html">صفحه اصلی</a> / جست‌وجو</nav>
+    <header class="page-head">
+      <h1>جست‌وجوی هوشمند</h1>
+      <p class="lead">درس، اصطلاح، جمله‌ی کد و تمرین را پیدا کنید. مترادف‌ها و غلط‌های املایی کوچک هم پوشش داده می‌شوند.</p>
+    </header>
+    <div class="search-hero">
+      <label class="visually-hidden" for="q">عبارت جست‌وجو</label>
+      <input type="search" id="q" class="search-input" autofocus placeholder="مثلاً: حلقه، کلاس، ورودی، try catch، Coin">
+    </div>
+    <div class="chips" role="group" aria-label="فیلتر نوع نتیجه" id="chips">
+      <button type="button" class="chip" aria-pressed="true" data-type="">همه</button>
+      <button type="button" class="chip" aria-pressed="false" data-type="lesson">درس‌ها</button>
+      <button type="button" class="chip" aria-pressed="false" data-type="glossary">واژه‌نامه</button>
+      <button type="button" class="chip" aria-pressed="false" data-type="sentence">جمله‌ها</button>
+      <button type="button" class="chip" aria-pressed="false" data-type="exercise">تمرین‌ها</button>
+    </div>
+    <p class="muted small" id="count" aria-live="polite"></p>
+    <div id="results"></div>
+  </main>
+  <script src="../data/curriculum.js"></script>
+  <script src="../data/lessons/language-basics-2.js"></script>
+  <script src="../data/lessons/basics-3.js"></script>
+  <script src="../data/lessons/programming-basics.js"></script>
+  <script src="../data/lessons/control-flow.js"></script>
+  <script src="../data/lessons/functions-collections.js"></script>
+  <script src="../data/lessons/collections-2.js"></script>
+  <script src="../data/lessons/collections-3.js"></script>
+  <script src="../data/lessons/oop.js"></script>
+  <script src="../data/lessons/oop-2.js"></script>
+  <script src="../data/lessons/oop-3.js"></script>
+  <script src="../data/lessons/exceptions.js"></script>
+  <script src="../data/lessons/advanced-types.js"></script>
+  <script src="../data/lessons/delegates-events.js"></script>
+  <script src="../data/lessons/advanced-2.js"></script>
+  <script src="../data/lessons/memory-tools.js"></script>
+  <script src="../data/lessons/unity-2019.js"></script>
+  <script src="../data/lessons/unity-more.js"></script>
+  <script src="../data/lessons/unity-full.js"></script>
+  <script src="../data/lessons/unity-advanced.js"></script>
+  <script src="../data/lessons/game-systems.js"></script>
+  <script src="../data/lessons/deep-topics.js"></script>
+  <script src="../data/lessons/projects.js"></script>
+  <script src="../data/lessons/projects-2.js"></script>
+  <script src="../data/lessons/projects-3.js"></script>
+  <script src="../data/glossary.js"></script>
+  <script src="../data/glossary-extra.js"></script>
+  <script src="../data/glossary-more.js"></script>
+  <script src="../data/glossary-more2.js"></script>
+  <script src="../data/sentences.js"></script>
+  <script src="../data/sentences-2.js"></script>
+  <script src="../data/sentences-3.js"></script>
+  <script src="../data/exercises.js"></script>
+  <script src="../js/progress-manager.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/search.js"></script>
+  <script>
+    (function () {
+      Common.renderHeader('../');
+      const input = document.getElementById('q');
+      const out = document.getElementById('results');
+      const count = document.getElementById('count');
+      const chips = document.querySelectorAll('.chip');
+      let filter = '';
+
+      // آدرس صفحه با ?q= قابل اشتراک است
+      const initial = new URLSearchParams(location.search).get('q');
+      if (initial) input.value = initial;
+
+      function render() {
+        const q = input.value.trim();
+        const url = new URL(location.href);
+        if (q) url.searchParams.set('q', q); else url.searchParams.delete('q');
+        history.replaceState(null, '', url);
+        if (!q) { out.innerHTML = ''; count.textContent = ''; return; }
+        const hits = Search.search(q, { types: filter ? [filter] : null });
+        count.textContent = hits.length + ' نتیجه';
+        if (!hits.length) {
+          out.innerHTML = '<p class="muted">چیزی پیدا نشد. کلمه‌ی دیگری امتحان کنید یا بخش کوتاه‌تری از آن را جست‌وجو کنید.</p>';
+          return;
+        }
+        const groups = {};
+        hits.forEach(h => (groups[h.type] = groups[h.type] || []).push(h));
+        out.innerHTML = Object.keys(groups).map(t => `
+          <h2 class="group-title">${Search.TYPE_LABEL[t]} (${groups[t].length})</h2>
+          <ul class="hits">${groups[t].map(h => `
+            <li class="hit">
+              <span class="hit-type">${Search.TYPE_LABEL[h.type]}</span>
+              <div><a href="${h.href}">${h.titleHtml}</a></div>
+              <p>${h.snippetHtml}</p>
+            </li>`).join('')}</ul>`).join('');
+      }
+
+      input.addEventListener('input', render);
+      chips.forEach(c => c.addEventListener('click', () => {
+        filter = c.dataset.type;
+        chips.forEach(x => x.setAttribute('aria-pressed', String(x === c)));
+        render();
+      }));
+      render();
+    })();
+  </script>
+</body>
+</html>

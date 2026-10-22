@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>پیشرفت من — آکادمی C#</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/design.css">
+  <script src="../js/theme-manager.js"></script>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main id="main" tabindex="-1" class="page">
+    <nav class="crumbs" aria-label="مسیر صفحه"><a href="../index.html">صفحه اصلی</a> / پیشرفت من</nav>
+    <header class="page-head">
+      <h1>پیشرفت من</h1>
+      <p class="lead">پیشرفت شما فقط روی همین مرورگر ذخیره می‌شود. می‌توانید از آن نسخه‌ی پشتیبان بگیرید یا بازگردانی کنید.</p>
+    </header>
+
+    <section class="section-plain">
+      <p><strong id="p-overall"></strong></p>
+      <div class="progress" aria-label="پیشرفت کلی"><div class="progress-fill" id="p-bar"></div></div>
+    </section>
+
+    <h2>درس‌های علامت‌گذاری‌شده برای مرور</h2>
+    <ul class="lesson-list" id="p-review"></ul>
+
+    <h2>علاقه‌مندی‌ها</h2>
+    <ul class="lesson-list" id="p-bookmarks"></ul>
+
+    <h2>پشتیبان‌گیری و بازیابی</h2>
+    <div class="exam-nav">
+      <button type="button" class="btn btn-primary" id="p-export">دریافت فایل پشتیبان</button>
+      <label class="btn btn-ghost" for="p-import">بازگردانی از فایل</label>
+      <input type="file" id="p-import" accept="application/json" hidden>
+    </div>
+    <p class="small muted" id="p-msg" aria-live="polite"></p>
+
+    <h2>بازنشانی</h2>
+    <p class="muted small">این کار تمام پیشرفت، آزمون‌ها و علامت‌ها را پاک می‌کند. قبل از آن از فایل پشتیبان استفاده کنید.</p>
+    <button type="button" class="btn btn-ghost" id="p-reset">بازنشانی پیشرفت</button>
+  </main>
+  <script src="../data/curriculum.js"></script>
+  <script src="../js/progress-manager.js"></script>
+  <script src="../js/common.js"></script>
+  <script src="../js/progress-page.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+// دیکشنری جمله‌های سی‌شارپ — بخش سوم
+window.SENTENCES.push(
+  { id: 's3-linq-any', fa: 'بررسی وجود حداقل یک عنصر', cat: 'LINQ', code: 'bool hasNegative = nums.Any(n => n < 0);', note: 'اگر حتی یک عنصر شرط را داشته باشد true می‌شود.' },
+  { id: 's3-linq-sum', fa: 'جمع عناصر با LINQ', cat: 'LINQ', code: 'int total = nums.Sum();', note: 'برای عناصر عددی.' },
+  { id: 's3-linq-groupby', fa: 'گروه‌بندی داده', cat: 'LINQ', code: 'var groups = words.GroupBy(w => w.Length);', note: 'بر اساس کلید مشخص گروه می‌سازد.' },
+  { id: 's3-file-stream', fa: 'خواندن خط‌به‌خط فایل بزرگ', cat: 'فایل', code: 'using var reader = new StreamReader("big.txt");\nwhile (!reader.EndOfStream) { string line = reader.ReadLine(); }', note: 'حافظه را کم مصرف نگه می‌دارد.' },
+  { id: 's3-file-append', fa: 'افزودن خط به انتهای فایل', cat: 'فایل', code: 'File.AppendAllText("log.txt", "خط جدید" + Environment.NewLine);', note: 'محتوای قبلی حفظ می‌شود.' },
+  { id: 's3-path-combine', fa: 'ساخت مسیر امن', cat: 'فایل', code: 'string p = Path.Combine("data", "a.txt");', note: 'جداکننده‌ی مسیر را بر اساس سیستم عامل می‌گذارد.' },
+  { id: 's3-dir-create', fa: 'ساخت پوشه در صورت نبود', cat: 'فایل', code: 'Directory.CreateDirectory("data");', note: 'اگر پوشه وجود داشته باشد خطا نمی‌دهد.' },
+  { id: 's3-json-indent', fa: 'JSON خوانا با تورفتگی', cat: 'JSON', code: 'var opt = new JsonSerializerOptions { WriteIndented = true };\nstring json = JsonSerializer.Serialize(obj, opt);', note: 'برای خواندن راحت‌تر فایل.' },
+  { id: 's3-generic-list', fa: 'تابع generic برای فهرست', cat: 'شیءگرایی', code: 'static T First<T>(List<T> items) => items[0];', note: 'برای هر نوع داده کار می‌کند.' },
+  { id: 's3-interface-impl', fa: 'پیاده‌سازی چند رابط', cat: 'شیءگرایی', code: 'class Report : IPrintable, ISaveable { ... }', note: 'یک کلاس می‌تواند چند قرارداد را بپذیرد.' },
+  { id: 's3-override-tostring', fa: 'بازتعریف ToString', cat: 'شیءگرایی', code: 'public override string ToString() => Name + " (" + Age + ")";', note: 'نمایش متنی شیء را سفارشی می‌کند.' },
+  { id: 's3-enum-parse', fa: 'تبدیل متن به Enum', cat: 'انواع داده', code: 'Day d = Enum.Parse<Day>("Monday");', note: 'متن باید دقیقاً نام یکی از مقادیر باشد.' },
+  { id: 's3-tuple-deconstruct', fa: 'باز کردن Tuple', cat: 'انواع داده', code: 'var (name, age) = GetUser();', note: 'مقادیر را در متغیرهای جدا می‌ریزد.' },
+  { id: 's3-null-assign', fa: 'مقداردهی تنبل اگر null باشد', cat: 'مقادیر تهی', code: 'cache ??= new Dictionary<string, int>();', note: 'فقط اگر null باشد مقداردهی می‌شود.' },
+  { id: 's3-lock', fa: 'قفل برای دسترسی همزمان', cat: 'ناهمگامی', code: 'lock (sync) { counter++; }', note: 'از دسترسی همزمان به یک داده جلوگیری می‌کند.' },
+  { id: 's3-task-all', fa: 'منتظر چند کار همزمان', cat: 'ناهمگامی', code: 'await Task.WhenAll(task1, task2);', note: 'تا همه‌ی کارها کامل نشوند ادامه نمی‌دهد.' },
+  { id: 's3-unity-instantiate', fa: 'ساخت شیء از Prefab', cat: 'Unity', code: 'Instantiate(coinPrefab, new Vector3(0, 1, 0), Quaternion.identity);', note: 'یک نمونه از Prefab را در موقعیت مشخص می‌سازد.' },
+  { id: 's3-unity-tag', fa: 'بررسی تگ شیء برخورد کرده', cat: 'Unity', code: 'if (other.CompareTag("Enemy")) { ... }', note: 'تگ باید در Tag Manager تعریف شده باشد.' },
+  { id: 's3-unity-time', fa: 'زمان گذشته از شروع بازی', cat: 'Unity', code: 'float seconds = Time.time;', note: 'بر حسب ثانیه از شروع اجرا.' },
+  { id: 's3-unity-mathf', fa: 'محدود کردن مقدار', cat: 'Unity', code: 'float pitch = Mathf.Clamp(p, -80f, 80f);', note: 'مقدار را در بازه‌ی مشخص نگه می‌دارد.' },
+  { id: 's3-unity-lerp', fa: 'حرکت نرم بین دو مقدار', cat: 'Unity', code: 'transform.position = Vector3.Lerp(a, b, 0.1f);', note: 'هر فریم کمی به مقصد نزدیک می‌شود.' },
+  { id: 's3-unity-gettag', fa: 'تغییر تگ شیء از کد', cat: 'Unity', code: 'gameObject.tag = "Collected";', note: 'تگ باید از قبل تعریف شده باشد.' },
+  { id: 's3-unity-findtag', fa: 'پیدا کردن شیء با تگ', cat: 'Unity', code: 'GameObject player = GameObject.FindWithTag("Player");', note: 'در Start یکبار انجام دهید، نه در Update.' },
+  { id: 's3-unity-rotate', fa: 'چرخاندن شیء', cat: 'Unity', code: 'transform.Rotate(0, 90 * Time.deltaTime, 0);', note: 'چرخش نرم حول محور Y.' },
+  { id: 's3-unity-trigger-exit', fa: 'تشخیص خروج از Trigger', cat: 'Unity', code: 'void OnTriggerExit2D(Collider2D other) { ... }', note: 'وقتی شیء از محدوده خارج شود صدا زده می‌شود.' }
+);

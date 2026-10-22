@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>آکادمی C# — یادگیری زبان C# از صفر</title>
+  <script src="js/theme-manager.js"></script>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/design.css">
+  <link rel="stylesheet" href="css/unity.css">
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <main id="main" tabindex="-1">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-text">
+        <h1 id="hero-title">زبان C# را از صفر، گام‌به‌گام یاد بگیرید</h1>
+        <p class="lead">
+          C# یک زبان برنامه‌نویسی شیءگرا از شرکت مایکروسافت است. با آن می‌توان نرم‌افزار دسکتاپ، وب، بازی (با Unity) و سرویس‌های شبکه ساخت. این آموزش از مفاهیم ساده شروع می‌شود و به‌تدریج به موضوعات پیشرفته‌تر می‌رسد.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" id="start-btn" href="pages/lesson.html?id=what-is-csharp">شروع از اولین درس</a>
+          <a class="btn btn-ghost hidden" id="resume-hero-btn" href="#">ادامه آخرین درس</a>
+        </div>
+      </div>
+      <pre class="hero-code" aria-hidden="true"><code id="hero-typed"></code></pre>
+    </section>
+
+    <section class="section" id="continue-section" hidden>
+      <h2>ادامه یادگیری</h2>
+      <div class="continue-card">
+        <div>
+          <p class="muted">آخرین درس مطالعه‌شده</p>
+          <p class="continue-title" id="continue-title"></p>
+          <div class="progress" role="progressbar" aria-label="درصد پیشرفت کل" aria-valuemin="0" aria-valuemax="100" id="continue-bar-wrap">
+            <div class="progress-fill" id="continue-bar"></div>
+          </div>
+          <p class="muted small" id="continue-percent"></p>
+        </div>
+        <a class="btn btn-primary" id="continue-btn" href="#">ادامه</a>
+      </div>
+    </section>
+
+    <section class="section" id="topics">
+      <h2>موضوعات آموزشی</h2>
+      <div class="topic-grid" id="topic-grid"></div>
+    </section>
+
+    <section class="section" id="path">
+      <h2>مسیر یادگیری پیشنهادی</h2>
+      <p class="muted">ابتدا موضوعات بالاتر را بخوانید. هر موضوع مبنای موضوع بعدی است، اما اجباری نیست و می‌توانید آزادانه هر موضوعی را انتخاب کنید.</p>
+      <ol class="path-list" id="path-list"></ol>
+    </section>
+
+    <section class="section" id="search">
+      <h2>جست‌وجوی درس</h2>
+      <p class="muted small"><a href="pages/search.html">جست‌وجوی پیشرفته و هوشمند</a> (شامل درس، واژه‌نامه، جمله و تمرین)</p>
+      <label class="visually-hidden" for="search-input">جست‌وجوی نام درس</label>
+      <input type="search" id="search-input" class="search-input" placeholder="مثلاً: متغیر، ورودی، عدد">
+      <div class="filters">
+        <label for="filter-level">سطح</label>
+        <select id="filter-level" class="select-input"><option value="">همه</option><option>مبتدی</option><option>متوسط</option><option>پیشرفته</option></select>
+        <label for="filter-status">وضعیت</label>
+        <select id="filter-status" class="select-input"><option value="">همه</option><option value="done">خوانده شده</option><option value="todo">خوانده نشده</option><option value="review">علامت مرور</option></select>
+      </div>
+      <ul class="lesson-results" id="search-results" aria-live="polite"></ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>آموزش C# به زبان فارسی. این نسخه بخشی از مجموعه کامل است.</p>
+  </footer>
+
+  <script src="data/curriculum.js"></script>
+  <script src="data/lessons/language-basics-2.js"></script>
+  <script src="data/lessons/basics-3.js"></script>
+  <script src="data/lessons/programming-basics.js"></script>
+  <script src="data/lessons/control-flow.js"></script>
+  <script src="data/lessons/functions-collections.js"></script>
+  <script src="data/lessons/collections-2.js"></script>
+  <script src="data/lessons/collections-3.js"></script>
+  <script src="data/lessons/oop.js"></script>
+  <script src="data/lessons/oop-2.js"></script>
+  <script src="data/lessons/oop-3.js"></script>
+  <script src="data/lessons/exceptions.js"></script>
+  <script src="data/lessons/advanced-types.js"></script>
+  <script src="data/lessons/delegates-events.js"></script>
+  <script src="data/lessons/advanced-2.js"></script>
+  <script src="data/lessons/memory-tools.js"></script>
+  <script src="data/lessons/unity-2019.js"></script>
+  <script src="data/lessons/unity-more.js"></script>
+  <script src="data/lessons/unity-full.js"></script>
+  <script src="data/lessons/unity-advanced.js"></script>
+  <script src="data/lessons/game-systems.js"></script>
+  <script src="data/lessons/deep-topics.js"></script>
+  <script src="data/lessons/projects.js"></script>
+  <script src="data/lessons/projects-2.js"></script>
+  <script src="data/lessons/projects-3.js"></script>
+  <script src="js/progress-manager.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

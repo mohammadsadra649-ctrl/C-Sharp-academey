@@ -1,0 +1,335 @@
+/* پالت: کاغذ سبز-خاکستری روشن، جوهر سرمه‌ای، بنفش C# فقط برای تاکیدهای کم */
+:root {
+  --paper: #eef2ed;
+  --paper-2: #e3e9e2;
+  --surface: #f8faf7;
+  --ink: #17262b;
+  --ink-soft: #4c5f63;
+  --line: #c9d3cc;
+  --accent: #5a2fa0;
+  --accent-ink: #ffffff;
+  --code-bg: #1d2530;
+  --code-ink: #e3e8ef;
+  --code-muted: #7d8da0;
+  --ok: #2b6b4f;
+  --bad: #a3362a;
+  --warn-bg: #f6ead5;
+  --tip-bg: #e2ece6;
+  --radius: 4px;
+  --max: 1080px;
+  font-family: Vazirmatn, Tahoma, "Segoe UI", system-ui, sans-serif;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+body { margin: 0; background: var(--paper); color: var(--ink); line-height: 1.9; font-size: 16px; }
+
+h1, h2, h3 { line-height: 1.4; margin: 0 0 .6em; font-weight: 800; }
+h1 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); }
+h2 { font-size: 1.4rem; margin-top: 1.6em; }
+h3 { font-size: 1.1rem; }
+p { margin: 0 0 1em; max-width: 68ch; }
+a { color: var(--accent); }
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 3px solid var(--accent); outline-offset: 2px;
+}
+
+.hidden, [hidden] { display: none !important; }
+.visually-hidden {
+  position: absolute !important; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+.muted { color: var(--ink-soft); }
+.small { font-size: .9rem; }
+
+/* هدر */
+.site-header {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  padding: .9rem clamp(1rem, 4vw, 2.5rem);
+  border-bottom: 1px solid var(--line); background: var(--surface);
+  position: sticky; top: 0; z-index: 10;
+}
+.brand { display: flex; align-items: center; gap: .6rem; text-decoration: none; color: var(--ink); font-weight: 800; }
+.brand-mark {
+  font-family: "Cascadia Code", Consolas, monospace; direction: ltr;
+  background: var(--accent); color: var(--accent-ink);
+  padding: .15rem .5rem; border-radius: var(--radius); font-size: .95rem;
+}
+.main-nav { display: flex; gap: 1.1rem; flex-wrap: wrap; }
+.main-nav a { text-decoration: none; color: var(--ink); font-weight: 600; }
+.main-nav a:hover { color: var(--accent); }
+
+/* هیرو */
+.hero {
+  max-width: var(--max); margin: 0 auto;
+  padding: clamp(2.5rem, 7vw, 5rem) clamp(1rem, 4vw, 2.5rem);
+  display: grid; grid-template-columns: 1.1fr 1fr; gap: 2.5rem; align-items: center;
+}
+.lead { font-size: 1.08rem; color: var(--ink-soft); }
+.hero-actions { display: flex; gap: .8rem; flex-wrap: wrap; margin-top: 1.4rem; }
+.hero-code {
+  background: var(--code-bg); color: var(--code-ink);
+  border-radius: var(--radius); padding: 1.4rem 1.2rem; margin: 0;
+  direction: ltr; text-align: left; min-height: 6.5rem;
+  font-family: "Cascadia Code", Consolas, monospace; font-size: .95rem;
+  white-space: pre-wrap; overflow-wrap: anywhere;
+}
+.hero-code code::after {
+  content: ""; display: inline-block; width: .55em; height: 1.1em;
+  background: var(--code-muted); vertical-align: text-bottom; margin-inline-start: 2px;
+  animation: blink 1s steps(1) infinite;
+}
+@keyframes blink { 50% { opacity: 0; } }
+
+/* دکمه‌ها */
+.btn {
+  display: inline-block; padding: .6rem 1.1rem; border-radius: var(--radius);
+  font: inherit; font-weight: 700; text-decoration: none; cursor: pointer;
+  border: 1px solid transparent; line-height: 1.4;
+}
+.btn-primary { background: var(--accent); color: var(--accent-ink); }
+.btn-primary:hover { filter: brightness(1.1); }
+.btn-primary:disabled { background: var(--ink-soft); cursor: default; }
+.btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+.btn-small { padding: .3rem .7rem; font-size: .9rem; }
+
+/* بخش‌ها */
+.section { max-width: var(--max); margin: 0 auto; padding: 1rem clamp(1rem, 4vw, 2.5rem) 2.5rem; }
+
+.continue-card {
+  display: flex; justify-content: space-between; align-items: center; gap: 1.2rem; flex-wrap: wrap;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.2rem 1.4rem;
+}
+.continue-title { font-weight: 800; font-size: 1.15rem; margin: 0 0 .4rem; }
+
+.progress { height: 8px; background: var(--paper-2); border-radius: 99px; overflow: hidden; margin: .6rem 0 .3rem; }
+.progress-fill { height: 100%; background: var(--accent); width: 0; transition: width .6s ease; }
+
+.topic-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+.topic-card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 1.2rem; display: flex; flex-direction: column; gap: .3rem;
+}
+.topic-card p { margin-bottom: .4rem; }
+.topic-meta { list-style: none; padding: 0; margin: 0 0 .3rem; display: flex; gap: 1rem; color: var(--ink-soft); font-size: .92rem; }
+.topic-card .btn { margin-top: auto; align-self: flex-start; }
+
+.path-list { padding-inline-start: 1.4rem; }
+.path-list li { margin: .35rem 0; }
+
+.search-input {
+  width: 100%; max-width: 480px; padding: .7rem .9rem; font: inherit;
+  border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); color: var(--ink);
+}
+.lesson-results { list-style: none; padding: 0; margin: .8rem 0 0; }
+.lesson-results li { padding: .4rem 0; border-bottom: 1px solid var(--line); }
+
+.site-footer { text-align: center; color: var(--ink-soft); padding: 2rem 1rem; border-top: 1px solid var(--line); font-size: .9rem; }
+
+/* صفحات داخلی */
+.page { max-width: 860px; margin: 0 auto; padding: 1.5rem clamp(1rem, 4vw, 2rem) 3rem; }
+.crumbs { font-size: .92rem; color: var(--ink-soft); margin-bottom: 1rem; }
+.crumbs a { color: var(--ink-soft); }
+.page-head { margin-bottom: 1.5rem; }
+.lesson-meta { list-style: none; padding: 0; display: flex; gap: 1.2rem; flex-wrap: wrap; color: var(--ink-soft); font-size: .95rem; margin: 0; }
+.lesson-meta a { color: var(--accent); }
+
+.lesson-list { list-style: none; padding: 0; display: grid; gap: .6rem; }
+.lesson-item a {
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  padding: .9rem 1.1rem; background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); text-decoration: none; color: var(--ink);
+}
+.lesson-item a:hover { border-color: var(--accent); }
+.lesson-status { font-size: .88rem; color: var(--ink-soft); }
+.lesson-item.is-done .lesson-status { color: var(--ok); font-weight: 700; }
+
+.objectives { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.3rem; margin: 1.2rem 0 1.6rem; }
+.objectives h2 { margin-top: 0; font-size: 1.1rem; }
+.objectives ul, .lesson-body ul { padding-inline-start: 1.3rem; }
+
+.lesson-body h2 { border-bottom: 1px solid var(--line); padding-bottom: .3rem; }
+
+.callout { border-radius: var(--radius); padding: .8rem 1rem; margin: 1rem 0; max-width: 68ch; }
+.callout.warn { background: var(--warn-bg); }
+.callout.tip { background: var(--tip-bg); }
+
+/* نمایشگر کد */
+.code-block { margin: 1.2rem 0; border-radius: var(--radius); overflow: hidden; background: var(--code-bg); }
+.code-toolbar {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: .45rem .8rem; background: #151b24; color: var(--code-muted); font-size: .85rem;
+}
+.code-toolbar .btn-ghost { color: var(--code-ink); border-color: #3a4657; background: transparent; }
+.code-pre { margin: 0; padding: .8rem 0; overflow-x: auto; text-align: left; }
+.code-body { font-family: "Cascadia Code", Consolas, monospace; font-size: .95rem; color: var(--code-ink); display: block; }
+.code-line { display: flex; padding: 0 1rem; line-height: 1.75; }
+.code-line.has-note { background: rgba(90, 47, 160, .22); }
+.ln { min-width: 2.2rem; color: var(--code-muted); user-select: none; text-align: right; padding-right: 1rem; }
+.lc { white-space: pre; }
+.code-notes { padding: .8rem 1rem; background: #242d3a; color: var(--code-ink); font-size: .92rem; }
+.code-notes p { margin: 0 0 .4rem; }
+.notes-toggle { margin: .5rem .8rem .8rem; color: var(--code-ink); border-color: #3a4657; background: transparent; }
+
+.output-label { margin: .4rem 0 .2rem; font-weight: 700; font-size: .95rem; }
+.output {
+  background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: .8rem 1rem; white-space: pre-wrap; font-family: "Cascadia Code", Consolas, monospace; margin: 0 0 1.2rem;
+}
+
+/* تمرین */
+.quiz { margin-top: 2.5rem; }
+.quiz-q { border: 1px solid var(--line); border-radius: var(--radius); padding: 1rem 1.2rem; margin: 0 0 1rem; background: var(--surface); }
+.quiz-q legend { font-weight: 800; padding: 0 .3rem; }
+.quiz-options { display: grid; gap: .5rem; margin-top: .5rem; }
+.quiz-opt {
+  text-align: right; font: inherit; padding: .6rem .9rem; border-radius: var(--radius);
+  border: 1px solid var(--line); background: var(--paper); color: var(--ink); cursor: pointer;
+}
+.quiz-opt:hover:not(:disabled) { border-color: var(--accent); }
+.quiz-opt:disabled { cursor: default; }
+.quiz-opt.correct { border-color: var(--ok); background: #dcefe5; }
+.quiz-opt.wrong { border-color: var(--bad); background: #f5dcd8; }
+.quiz-feedback { margin: .7rem 0 0; min-height: 1.2em; }
+.quiz-feedback.ok { color: var(--ok); }
+.quiz-feedback.bad { color: var(--bad); }
+.quiz-score { font-weight: 800; }
+
+.finish { margin: 2rem 0; }
+.related ul { padding-inline-start: 1.2rem; }
+
+.prev-next { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: 2.5rem; border-top: 1px solid var(--line); padding-top: 1.2rem; }
+
+/* واکنش‌گرا */
+@media (max-width: 760px) {
+  .hero { grid-template-columns: 1fr; gap: 1.6rem; }
+  .hero-code { font-size: .85rem; }
+  .continue-card { flex-direction: column; align-items: stretch; }
+  .prev-next .btn { width: 100%; text-align: center; }
+}
+
+/* واژه‌نامه */
+.glossary-tools { display: flex; gap: .6rem; flex-wrap: wrap; align-items: center; margin-bottom: .6rem; }
+.glossary-tools .search-input { flex: 1 1 260px; max-width: none; }
+.select-input { font: inherit; padding: .65rem .8rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); color: var(--ink); }
+.glossary-list { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: .5rem; }
+.glossary-item details { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+.glossary-item summary {
+  display: flex; gap: .8rem; align-items: baseline; flex-wrap: wrap; cursor: pointer; padding: .75rem 1rem; list-style: none;
+}
+.glossary-item summary::-webkit-details-marker { display: none; }
+.glossary-item summary::before { content: "◂"; color: var(--accent); font-size: .85rem; }
+.glossary-item details[open] summary::before { content: "▾"; }
+.g-fa { font-weight: 800; }
+.g-en { color: var(--ink-soft); font-size: .92rem; }
+.g-cat { margin-inline-start: auto; font-size: .8rem; color: var(--accent); }
+.g-body { padding: 0 1rem 1rem; border-top: 1px solid var(--line); }
+.g-body p { margin: .6rem 0 .2rem; }
+.g-code { background: var(--code-bg); color: var(--code-ink); padding: .6rem .8rem; border-radius: var(--radius); overflow-x: auto; }
+.glossary-empty { padding: 1rem; color: var(--ink-soft); }
+
+/* تب‌ها و دیکشنری جمله‌ها */
+.tabs { display: flex; gap: .5rem; margin: 1rem 0; border-bottom: 1px solid var(--line); }
+.tab {
+  font: inherit; font-weight: 700; padding: .6rem 1rem; background: transparent; color: var(--ink-soft);
+  border: 0; border-bottom: 3px solid transparent; cursor: pointer;
+}
+.tab.is-active { color: var(--accent); border-bottom-color: var(--accent); }
+.sentence-list { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: .8rem; }
+.sentence-item { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: .9rem 1rem; }
+.s-fa { font-weight: 700; margin: 0 0 .4rem; }
+
+/* آزمون‌ها */
+.exam-list { list-style: none; padding: 0; display: grid; gap: .6rem; margin-bottom: 1.5rem; }
+.exam-item { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: .9rem 1rem; }
+.exam-item a { text-decoration: none; color: var(--ink); display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; font-weight: 700; }
+.exam-item a:hover { color: var(--accent); }
+.exam-item p { margin: .3rem 0 0; }
+.exam-meta { font-weight: 400; color: var(--ink-soft); font-size: .92rem; }
+.exam-nav { display: flex; gap: .6rem; margin-top: 1.2rem; flex-wrap: wrap; }
+.review-list { padding-inline-start: 1.2rem; }
+.review-list li { margin-bottom: 1rem; }
+.related-list { padding-inline-start: 1.2rem; }
+
+/* ===== حالت تاریک ===== */
+:root[data-theme="dark"] {
+  --paper: #161b22;
+  --paper-2: #1f262f;
+  --surface: #1d242d;
+  --ink: #e6edf3;
+  --ink-soft: #9aa7b4;
+  --line: #2d3742;
+  --accent: #a77bf0;
+  --accent-ink: #14101f;
+  --code-bg: #0d1117;
+  --code-ink: #d6dde6;
+  --code-muted: #6e7b89;
+  --ok: #4fbf86;
+  --bad: #f07a6e;
+  --warn-bg: #3a3119;
+  --tip-bg: #1a2d3a;
+  color-scheme: dark;
+}
+:root[data-theme="dark"] .output { background: #0d1117; color: #cfe8c6; }
+:root[data-theme="dark"] .quiz-opt { background: #232b35; }
+:root[data-theme="dark"] .quiz-opt.correct { background: #173626; }
+:root[data-theme="dark"] .quiz-opt.wrong { background: #3f1f1b; }
+:root[data-theme="dark"] .site-header { background: #11161d; }
+:root[data-theme="dark"] .main-nav a { color: var(--ink); }
+:root[data-theme="dark"] .search-input, :root[data-theme="dark"] .select-input { background: var(--surface); color: var(--ink); border-color: var(--line); }
+:root[data-theme="dark"] .hero-code, :root[data-theme="dark"] .g-code { background: #0d1117; }
+
+.theme-btn {
+  font: inherit; font-size: .9rem; font-weight: 700; cursor: pointer;
+  padding: .4rem .8rem; border-radius: var(--radius);
+  background: transparent; color: var(--ink); border: 1px solid var(--line);
+}
+.theme-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ===== دسترس‌پذیری: پرش به محتوا ===== */
+.skip-link {
+  position: absolute; top: -48px; right: 1rem; z-index: 100;
+  background: var(--accent); color: var(--accent-ink); padding: .5rem .9rem; border-radius: var(--radius);
+  text-decoration: none; font-weight: 700;
+}
+.skip-link:focus { top: .6rem; }
+
+/* ===== ابزارهای درس و فیلترها ===== */
+.lesson-tools { display: flex; gap: .6rem; flex-wrap: wrap; margin: .6rem 0 0; }
+.filters { display: flex; gap: .5rem; align-items: center; flex-wrap: wrap; margin-top: .7rem; font-size: .92rem; color: var(--ink-soft); }
+.filters .select-input { padding: .45rem .6rem; }
+.section-plain { margin-bottom: 1rem; }
+
+/* ===== بهبودهای ظاهری ===== */
+.topic-card, .exam-item, .sentence-item, .glossary-item details {
+  transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+.topic-card:hover, .exam-item:hover { border-color: var(--accent); box-shadow: 0 4px 14px rgba(0,0,0,.06); }
+.btn { transition: filter .15s ease, border-color .15s ease, color .15s ease; }
+.btn:active { transform: translateY(1px); }
+.lesson-body h2 { scroll-margin-top: 80px; }
+.code-block { box-shadow: 0 1px 2px rgba(0,0,0,.08); }
+table { width: 100%; border-collapse: collapse; }
+
+@media (max-width: 760px) {
+  .site-header { padding: .7rem 1rem; }
+  .main-nav { width: 100%; justify-content: flex-start; gap: .8rem; font-size: .95rem; }
+  .theme-btn { margin-inline-start: auto; }
+  .glossary-tools { flex-direction: column; align-items: stretch; }
+  .exam-item a { flex-direction: column; gap: .2rem; }
+}
+
+@media print {
+  .site-header, .skip-link, .prev-next, .lesson-tools, .finish, .quiz, .main-nav, .theme-btn { display: none !important; }
+  body { background: #fff; color: #000; }
+  .code-block, .output { border: 1px solid #999; }
+  .code-pre, .code-body { color: #000; background: #f4f4f4; }
+  a { color: #000; text-decoration: underline; }
+}
